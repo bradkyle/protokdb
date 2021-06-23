@@ -20,6 +20,7 @@ jobs:
         working-directory: ./
     steps:
     - uses: actions/checkout@v2
+    - run: sudo apt-get update && sudo apt-get install tree -y
     - uses: bazelbuild/setup-bazelisk@v1
     - name: Mount bazel cache  # Optional
       uses: actions/cache@v2
@@ -28,9 +29,10 @@ jobs:
         key: bazel
     - run: ls -a
     - run: bazel build //src:all
-    - name: Archive results
-      uses: actions/upload-artifact@v2
-      with:
-        name: build_example_cpp 
-        path: ./
-        retention-days: 1
+    # - name: Archive results
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: build_example_cpp 
+    #     path: ./
+    #     retention-days: 1
+    - run: cd ext && unzip linuxx86.zip && ls && tree 
