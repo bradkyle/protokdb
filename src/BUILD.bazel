@@ -1,10 +1,10 @@
 
-# proto_library(
-#     name = "examples_proto",
-#     srcs = ["examples.proto"],
-#     visibility = ["//visibility:public"],
-#     deps = [":kdb_type_specifier_proto"],
-# )
+proto_library(
+    name = "examples_proto",
+    srcs = ["examples.proto"],
+    visibility = ["//visibility:public"],
+    deps = [":kdb_type_specifier_proto"],
+)
 
 proto_library(
     name = "kdb_type_specifier_proto",
