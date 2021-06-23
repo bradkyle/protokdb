@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
 
@@ -20,11 +20,11 @@ enum KdbTypeSpecifier {
 }
 
 message MapKdbTypeSpecifier {
-    optional KdbTypeSpecifier key_type   = 1;
-    optional KdbTypeSpecifier value_type = 2;
+    KdbTypeSpecifier key_type   = 1;
+    KdbTypeSpecifier value_type = 2;
 }
 
 extend google.protobuf.FieldOptions {
-    optional KdbTypeSpecifier    kdb_type        = 756866;
-    optional MapKdbTypeSpecifier map_kdb_type    = 756867;
+    KdbTypeSpecifier    kdb_type        = 756866;
+    MapKdbTypeSpecifier map_kdb_type    = 756867;
 }
