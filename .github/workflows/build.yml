@@ -17,7 +17,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./src
+        working-directory: ./
     steps:
     - uses: actions/checkout@v2
     - uses: bazelbuild/setup-bazelisk@v1
@@ -27,7 +27,7 @@ jobs:
         path: "~/.cache/bazel"
         key: bazel
     - run: ls -a
-    - run: bazel build //:all
+    - run: bazel build //src:all
     - name: Archive results
       uses: actions/upload-artifact@v2
       with:
