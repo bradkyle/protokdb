@@ -17,7 +17,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./
+        working-directory: ./src
     steps:
     - uses: actions/checkout@v2
     - uses: bazelbuild/setup-bazelisk@v1
@@ -27,8 +27,7 @@ jobs:
         path: "~/.cache/bazel"
         key: bazel
     - run: ls -a
-    - run: sudo apt-get update && sudo apt-get install tree -y && tree
-    - run: bazel build //src:all
+    - run: bazel build //:all
     - name: Archive results
       uses: actions/upload-artifact@v2
       with:
