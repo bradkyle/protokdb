@@ -17,7 +17,12 @@ load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_
 rules_proto_dependencies()
 rules_proto_toolchains()
 
+load("@rules_proto_grpc//cpp:repositories.bzl", rules_proto_grpc_cpp_repos = "cpp_repos")
+rules_proto_grpc_cpp_repos()
+
 # C++
 load("@rules_proto_grpc//cpp:repositories.bzl", "cpp_repos")
 cpp_repos()
 
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+grpc_deps()

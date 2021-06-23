@@ -2,25 +2,27 @@
 proto_library(
     name = "kdb_type_specifier_proto",
     srcs = ["kdb_type_specifier.proto"],
+    visibility = ["//visibility:public"],
     deps = ["@com_google_protobuf//:descriptor_proto"],
 )
 
 proto_library(
     name = "examples_proto",
     srcs = ["examples.proto"],
+    visibility = ["//visibility:public"],
     deps = [":kdb_type_specifier_proto"],
 )
 
-
-# load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_compile")
-# cpp_proto_compile(
-#     name = "cpp_examples_proto",
-#     protos = [":examples_proto"],
-# )
-
-
 load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
 cpp_proto_library(
+    visibility = ["//visibility:public"],
     name = "cpp_examples_proto",
     protos = [":examples_proto"],
 )
+
+# cc_library(
+#     name = "protobufkdb_lib",
+#     srcs = [
+
+#     ]
+# )
