@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option cc_enable_arenas = true;
 
-import "kdb_type_specifier.proto";
+import "src/kdb_type_specifier.proto";
 
 
 message ScalarExample {
