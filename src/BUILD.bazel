@@ -1,5 +1,4 @@
 
-
 proto_library(
     name = "kdb_type_specifier_proto",
     srcs = ["kdb_type_specifier.proto"],
@@ -37,11 +36,11 @@ cc_library(
         "ScalarValues.cpp",
     ],
     hdrs = glob([
-        "src/*.h",
-        "ext/k.h",
+        "*.h",
+        "../ext/k.h",
     ]),
     # copts = COPTS,
-    includes = ["src/"],
+    includes = ["src/", "./"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
     deps = [":cpp_examples_proto"]
