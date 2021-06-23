@@ -1,4 +1,3 @@
-load("//:defs.bzl", "proto_plugin")
 
 proto_library(
     name = "examples_proto",
