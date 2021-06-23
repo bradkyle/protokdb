@@ -6,57 +6,58 @@ proto_library(
     deps = ["@com_google_protobuf//:descriptor_proto"],
 )
 
-proto_library(
-    name = "examples_proto",
-    srcs = ["examples.proto"],
-    visibility = ["//visibility:public"],
-    deps = ["//:kdb_type_specifier_proto"],
-)
+# proto_library(
+#     name = "examples_proto",
+#     srcs = ["examples.proto"],
+#     visibility = ["//visibility:public"],
+#     deps = [":kdb_type_specifier_proto"],
+# )
 
-load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
-cpp_proto_library(
-    visibility = ["//visibility:public"],
-    name = "cpp_examples_proto",
-    protos = [":examples_proto"],
-)
+# load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
+# cpp_proto_library(
+#     visibility = ["//visibility:public"],
+#     name = "cpp_examples_proto",
+#     protos = [":examples_proto"],
+# )
 
-COPTS = select({
-    "//conditions:default": [
-        "-DHAVE_PTHREAD",
-        "-DHAVE_ZLIB",
-        "-Woverloaded-virtual",
-        "-Wno-sign-compare",
-        "-Wno-unused-function",
-        # Prevents ISO C++ const string assignment warnings for pyext sources.
-        "-Wno-write-strings",
-        "-Wno-deprecated-declarations",
-    ],
-})
+# COPTS = select({
+#     "//conditions:default": [
+#         "-DHAVE_PTHREAD",
+#         "-DHAVE_ZLIB",
+#         "-Woverloaded-virtual",
+#         "-Wno-sign-compare",
+#         "-Wno-unused-function",
+#         # Prevents ISO C++ const string assignment warnings for pyext sources.
+#         "-Wno-write-strings",
+#         "-Wno-deprecated-declarations",
+#     ],
+# })
 
-LINK_OPTS = select({
-    "//conditions:default": [
-        "-lpthread",
-        "-lm",
-    ],
-})
+# LINK_OPTS = select({
+#     "//conditions:default": [
+#         "-lpthread",
+#         "-lm",
+#     ],
+# })
 
-cc_library(
-    name = "protobufkdb_lib",
-    srcs = [
-        "KdbTypes.cpp",
-        "MapValues.cpp",
-        "MessageFactory.cpp",
-        "MessageFormat.cpp",
-        "MessageParser.cpp",
-        "ProtobufKdb.cpp",
-        "RepeatedValues.cpp",
-        "ScalarValues.cpp",
-    ],
-    hdrs = glob([
-        "*.h",
-    ]),
-    copts = COPTS,
-    includes = ["src/"],
-    linkopts = LINK_OPTS,
-    visibility = ["//visibility:public"],
-)
+# cc_library(
+#     name = "protobufkdb_lib",
+#     srcs = [
+#         "KdbTypes.cpp",
+#         "MapValues.cpp",
+#         "MessageFactory.cpp",
+#         "MessageFormat.cpp",
+#         "MessageParser.cpp",
+#         "ProtobufKdb.cpp",
+#         "RepeatedValues.cpp",
+#         "ScalarValues.cpp",
+#     ],
+#     hdrs = glob([
+#         "src/*.h",
+#         "ext/k.h",
+#     ]),
+#     # copts = COPTS,
+#     includes = ["src/"],
+#     # linkopts = LINK_OPTS,
+#     visibility = ["//visibility:public"],
+# )
