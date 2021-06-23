@@ -9,7 +9,7 @@ proto_library(
 load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_compile")
 cpp_proto_compile(
     name = "cpp_examples_proto",
-    protos = [":examples"],
+    protos = [":examples_proto"],
 )
 
 
