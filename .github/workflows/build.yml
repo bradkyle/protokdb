@@ -33,3 +33,4 @@ jobs:
       with:
         name: build_example_cpp 
         path: ./
+        retention-days: 1
