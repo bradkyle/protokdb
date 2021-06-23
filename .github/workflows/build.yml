@@ -28,8 +28,8 @@ jobs:
         key: bazel
     - run: ls -a
     - run: bazel build //src:all
-    - name: Archive results
-      uses: actions/upload-artifact@v2
-      with:
-        name: build_example_cpp 
-        path: ./
+    # - name: Archive results
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: build_example_cpp 
+    #     path: ./
