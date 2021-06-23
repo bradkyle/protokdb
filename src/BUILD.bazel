@@ -23,6 +23,13 @@ cpp_proto_library(
     ],
 )
 
+COPTS = select({
+    "//conditions:default": [
+        "-DKXVER=3",
+        "-Wall",
+    ],
+})
+
 cc_library(
     name = "protobufkdb_lib",
     srcs = [
@@ -39,7 +46,7 @@ cc_library(
         "*.h",
         "src/*.h",
     ]),
-    # copts = COPTS,
+    copts = COPTS,
     includes = ["src/", "./"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
