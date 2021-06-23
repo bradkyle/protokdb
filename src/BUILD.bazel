@@ -1,8 +1,14 @@
 
 proto_library(
+    name = "kdb_type_specifier_proto",
+    srcs = ["kdb_type_specifier.proto"],
+    deps = ["@com_google_protobuf//:descriptor_proto"],
+)
+
+proto_library(
     name = "examples_proto",
     srcs = ["examples.proto"],
-    deps = ["@com_google_protobuf//:any_proto"],
+    deps = [":kdb_type_specifier_proto"],
 )
 
 

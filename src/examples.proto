@@ -54,3 +54,5 @@ message SametypeExampleDynamic2 {
     string triple_two           = 2;
     string triple_three         = 3;
 }
+
+
