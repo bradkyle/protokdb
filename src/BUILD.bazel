@@ -37,7 +37,7 @@ cc_library(
         "ScalarValues.cpp",
     ],
     hdrs = glob([
-        "*.h",
+        "src/*.h",
         "ext/k.h",
     ]),
     # copts = COPTS,
