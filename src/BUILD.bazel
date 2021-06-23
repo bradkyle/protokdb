@@ -50,5 +50,7 @@ cc_library(
     includes = ["src/", "./"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
-    deps = [":cpp_examples_proto"]
+    deps = [
+      ":cpp_examples_proto"
+    ]
 )
