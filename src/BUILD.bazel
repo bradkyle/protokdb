@@ -1,86 +1,23 @@
 load("//:defs.bzl", "proto_plugin")
 
-proto_plugin(
-    name = "cpp_plugin",
-    exclusions = [
-        "google/protobuf",
-    ],
-    outputs = [
-        "{protopath}.pb.h",
-        "{protopath}.pb.cc",
-    ],
-    protoc_plugin_name = "cpp",
-    visibility = ["//visibility:public"],
+proto_library(
+    name = "examples_proto",
+    srcs = ["examples.proto"],
+    deps = ["@com_google_protobuf//:any_proto"],
 )
 
-proto_plugin(
-    name = "grpc_cpp_plugin",
-    exclusions = [
-        "google/protobuf",
-    ],
-    options = [
-        "generate_mock_code=true",
-    ],
-    outputs = [
-        "{protopath}.grpc.pb.h",
-        "{protopath}.grpc.pb.cc",
-        "{protopath}_mock.grpc.pb.h",
-    ],
-    tool = "@com_github_grpc_grpc//src/compiler:grpc_cpp_plugin",
-    visibility = ["//visibility:public"],
+
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_compile")
+
+cpp_proto_compile(
+    name = "cpp_examples_proto",
+    protos = [":examples"],
 )
 
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
-load("//cpp:defs.bzl", "cpp_grpc_library")
 
-package(default_visibility = ["//visibility:public"])
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
 
-cpp_grpc_library(
-    name = "routeguide",
-    protos = ["//example/proto:routeguide_proto"],
-)
-
-cc_test(
-    name = "feature_test",
-    size = "small",
-    srcs = ["feature_test.cc"],
-    copts = ["-Iexternal/gtest/include"],
-    deps = [
-        ":helper",
-        "//external:gtest",
-    ],
-)
-
-cc_library(
-    name = "helper",
-    srcs = ["helper.cc"],
-    hdrs = ["helper.h"],
-    deps = [":routeguide"],
-)
-
-cc_binary(
-    name = "client",
-    srcs = ["client.cc"],
-    data = ["//example/proto:routeguide_features"],
-    deps = [":helper"],
-)
-
-cc_binary(
-    name = "server",
-    srcs = ["server.cc"],
-    data = ["//example/proto:routeguide_features"],
-    deps = [":helper"],
-)
-
-load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_library")
-
-cpp_grpc_library(
-    name = "thing_cpp_grpc",
-    protos = ["@rules_proto_grpc//example/proto:thing_proto"],
-)
-
-cpp_grpc_library(
-    name = "greeter_cpp_grpc",
-    protos = ["@rules_proto_grpc//example/proto:greeter_grpc"],
-    deps = ["thing_cpp_grpc"],
+cpp_proto_library(
+    name = "cpp_examples_proto",
+    protos = [":examples_proto"],
 )
