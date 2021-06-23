@@ -57,7 +57,7 @@ cc_library(
         "ext/k.h",
     ]),
     # copts = COPTS,
-    includes = ["src/"],
+    #includes = ["src/"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
 )
