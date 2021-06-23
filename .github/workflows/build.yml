@@ -1,0 +1,34 @@
+
+name: Deploy full cluster
+
+on:
+  push:
+    branches:
+    - prd
+    - stg
+    - dev
+    - master
+    - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+    steps:
+    - uses: actions/checkout@v2
+    - uses: bazelbuild/setup-bazelisk@v1
+    - name: Mount bazel cache  # Optional
+      uses: actions/cache@v2
+      with:
+        path: "~/.cache/bazel"
+        key: bazel
+    - run: bazel build //src:all
+    - name: Archive results
+      uses: actions/upload-artifact@v2
+      with:
+        name: build_example_cpp 
+        path: ./example/cpp/
