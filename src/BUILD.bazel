@@ -13,6 +13,7 @@ proto_library(
     visibility = ["//visibility:public"],
     deps = [":kdb_type_specifier_proto"],
 )
+
 # load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
 # cpp_proto_library(
 #     visibility = ["//visibility:public"],
@@ -60,4 +61,5 @@ cc_library(
     includes = ["src/"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
+    deps = [":examples_proto"]
 )
