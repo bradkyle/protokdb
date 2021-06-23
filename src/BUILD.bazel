@@ -14,12 +14,12 @@ proto_library(
     deps = [":kdb_type_specifier_proto"],
 )
 
-load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
-cpp_proto_library(
-    visibility = ["//visibility:public"],
-    name = "cpp_examples_proto",
-    protos = [":examples_proto"],
-)
+# load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
+# cpp_proto_library(
+#     name = "cpp_examples_proto",
+#     visibility = ["//visibility:public"],
+#     protos = [":examples_proto"],
+# )
 
 # COPTS = select({
 #     "//conditions:default": [
@@ -41,25 +41,25 @@ cpp_proto_library(
 #     ],
 # })
 
-cc_library(
-    name = "protobufkdb_lib",
-    srcs = [
-        "KdbTypes.cpp",
-        "MapValues.cpp",
-        "MessageFactory.cpp",
-        "MessageFormat.cpp",
-        "MessageParser.cpp",
-        "ProtobufKdb.cpp",
-        "RepeatedValues.cpp",
-        "ScalarValues.cpp",
-    ],
-    hdrs = glob([
-        "*.h",
-        "ext/k.h",
-    ]),
-    # copts = COPTS,
-    includes = ["src/"],
-    # linkopts = LINK_OPTS,
-    visibility = ["//visibility:public"],
-    deps = [":cpp_examples_proto"]
-)
+# cc_library(
+#     name = "protobufkdb_lib",
+#     srcs = [
+#         "KdbTypes.cpp",
+#         "MapValues.cpp",
+#         "MessageFactory.cpp",
+#         "MessageFormat.cpp",
+#         "MessageParser.cpp",
+#         "ProtobufKdb.cpp",
+#         "RepeatedValues.cpp",
+#         "ScalarValues.cpp",
+#     ],
+#     hdrs = glob([
+#         "*.h",
+#         "ext/k.h",
+#     ]),
+#     # copts = COPTS,
+#     includes = ["src/"],
+#     # linkopts = LINK_OPTS,
+#     visibility = ["//visibility:public"],
+#     deps = [":cpp_examples_proto"]
+# )
