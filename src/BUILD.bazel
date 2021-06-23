@@ -53,11 +53,11 @@ cc_library(
         "ScalarValues.cpp",
     ],
     hdrs = glob([
-        "src/*.h",
-        "ext/k.h",
+        "*.h",
+        "../ext/k.h",
     ]),
     # copts = COPTS,
-    #includes = ["src/"],
+    includes = ["./"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
 )
