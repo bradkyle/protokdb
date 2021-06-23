@@ -1,14 +1,14 @@
 
 proto_library(
     name = "kdb_type_specifier_proto",
-    srcs = ["kdb_type_specifier.proto"],
+    srcs = ["src/kdb_type_specifier.proto"],
     visibility = ["//visibility:public"],
     deps = ["@com_google_protobuf//:descriptor_proto"],
 )
 
 proto_library(
     name = "examples_proto",
-    srcs = ["examples.proto"],
+    srcs = ["src/examples.proto"],
     visibility = ["//visibility:public"],
     deps = [":kdb_type_specifier_proto"],
 )
@@ -56,7 +56,7 @@ cc_library(
         "*.h",
     ]),
     copts = COPTS,
-    includes = ["src/", "."],
+    includes = ["src/"],
     linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
 )
