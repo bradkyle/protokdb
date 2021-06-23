@@ -37,7 +37,8 @@ cc_library(
     ],
     hdrs = glob([
         "*.h",
-        "../ext/k.h",
+        "src/*.h",
+        "ext/k.h",
     ]),
     # copts = COPTS,
     includes = ["src/", "./"],
