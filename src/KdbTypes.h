@@ -2,7 +2,7 @@
 #define __KDB_TYPES_H__
 
 #include <google/protobuf/message.h>
-#include "kdb_type_specifier.pb.h"
+#include "src/kdb_type_specifier.pb.h"
 
 // Due to its excessive and non-specific use of #define, 'k.h' must be included
 // after all the protobuf headers to avoid conflicts.
