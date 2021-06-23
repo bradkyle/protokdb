@@ -14,12 +14,12 @@ proto_library(
     deps = [":kdb_type_specifier_proto"],
 )
 
-# load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
-# cpp_proto_library(
-#     visibility = ["//visibility:public"],
-#     name = "cpp_examples_proto",
-#     protos = [":examples_proto"],
-# )
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
+cpp_proto_library(
+    visibility = ["//visibility:public"],
+    name = "cpp_examples_proto",
+    protos = [":examples_proto"],
+)
 
 # COPTS = select({
 #     "//conditions:default": [
@@ -61,5 +61,5 @@ cc_library(
     includes = ["src/"],
     # linkopts = LINK_OPTS,
     visibility = ["//visibility:public"],
-    deps = [":examples_proto"]
+    deps = [":cpp_examples_proto"]
 )
